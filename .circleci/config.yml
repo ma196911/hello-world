@@ -13,9 +13,9 @@ jobs: # 今回は 2 つのジョブを用意し、ワークフロー機能でジ
       - run: mkdir -p my_workspace > my_workspace/echo-output
       - run: echo "Trying out workspace"
       - persist_to_workspace:
-        root: my_workspace
-        paths:
-          - echo-output
+          root: my_workspace
+          paths:
+            - echo-output
           
   two: # 2 つ目のジョブ
     docker: # 前述と同様に Docker イメージ内で実行します。
@@ -27,7 +27,7 @@ jobs: # 今回は 2 つのジョブを用意し、ワークフロー機能でジ
       - checkout
       - run: echo "A more familiar hi" # 前述のコマンドに類似した echo コマンドを実行します。
       - attach_workspace:
-        at: my_workspace
+          at: my_workspace
       - run: |
           if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
             echo "It worked!";
@@ -42,5 +42,5 @@ workflows:
     jobs: # 実行するジョブをここにリストします
       - one
       - two:
-        requires:
-          - one
+          requires:
+            - one
