@@ -10,8 +10,8 @@ jobs: # 今回は 2 つのジョブを用意し、ワークフロー機能でジ
     steps:
       - checkout # GitHub からコードをプルします
       - run: echo "A first hello" # "A first hello" を stdout に出力します
-      - run: mkdir -p my_workspace > my_workspace/echo-output
-      - run: echo "Trying out workspace"
+      - run: mkdir -p my_workspace 
+      - run: echo "Trying out workspace" > my_workspace/echo-output
       - persist_to_workspace:
           root: my_workspace
           paths:
