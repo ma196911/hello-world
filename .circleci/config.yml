@@ -1,26 +1,25 @@
 jobs:
   build:
     docker:
-      - image : circleci/<language>:<version TAG>
-    auth:
-            username : mydockerhub-user
-            password : $DOCKERHUB_PASSWORD 
+      - image: circleci/<language>:<version TAG>
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # コンテキスト/プロジェクト UI 環境変数の参照
     steps:
-        - checkout
-        - run: <command>
+      - checkout
+      - run: <command>
   test:
-      docker:
-        -image: circleci/<language>:<version TAG>
-      auth:
-         username: mydockerhub-user
-         password: $DOCKERHUB_PASSWORD
-      steps:
-          - checkout 
-          - run: <command>
+    docker:
+      - image: circleci/<language>:<version TAG>
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # コンテキスト/プロジェクト UI 環境変数の参照
+    steps:
+      - checkout
+      - run: <command>
 workflows:
-   version: 2
-   build_and_test:
-      jobs:
-        - build
-        - test
-              
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test
