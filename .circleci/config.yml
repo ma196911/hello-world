@@ -13,7 +13,7 @@ jobs:
         -image: circleci/<language>:<version TAG>
       auth:
          username: mydockerhub-user
-         password: $DOCKEHUB_PASSWORD
+         password: $DOCKERHUB_PASSWORD
       steps:
           - checkout 
           - run: <command>
